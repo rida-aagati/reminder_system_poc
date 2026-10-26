@@ -1,0 +1,20 @@
+# Environment variables (Never push API keys to GitHub!)
+.env
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Generated output audio (keep folder, ignore generated WAV files)
+output_audio/*.wav
+!output_audio/.gitkeep
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# OS files
+Thumbs.db
+.DS_Store

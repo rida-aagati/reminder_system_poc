@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🎙️ Run Live Voice Agent (Microphone)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/realtime_voice_agent.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "⚡ Run Async Audio Suite (5 Inputs)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🔊 Test Deepgram Aura TTS",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/deepgram_tts.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🔄 Reset Database (db.json)",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/reset_db.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

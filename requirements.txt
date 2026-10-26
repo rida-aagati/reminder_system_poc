@@ -1,0 +1,5 @@
+# TalentSkout Voice Agent Dependencies
+anthropic>=0.20.0
+deepgram-sdk>=3.0.0
+sounddevice>=0.4.6
+numpy>=1.24.0
