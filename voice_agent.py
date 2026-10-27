@@ -82,6 +82,8 @@ if ANTHROPIC_KEY:
     except Exception as exc:
         print(f"[Init] Anthropic async setup warning: {exc}")
 
+from realtime_voice_agent import async_call_streaming_llm, resolve_llm_provider
+
 
 # ==============================================================================
 # SECTION 1: DATABASE & SYNTHETIC TALENTSKOUT DATA
@@ -501,45 +503,28 @@ async def async_stream_llm(
                         yield OutputGuardrail.sanitize(buf)
         return
 
-    text_lower = transcript.lower()
+    # Multi-Provider Asynchronous LLM Streaming (Groq / Anthropic / OpenAI / Gemini)
+    system_prompt = build_system_prompt(interview)
     iid = interview["interview_id"]
-    name = interview["candidate_name"]
-    role = interview["role"]
-    itype = interview["interview_type"]
-    time_left = interview["time_left_hours"]
-
-    if any(k in text_lower for k in ["insurance", "weather", "crypto", "pizza", "flight"]):
-        full_reply = "I'm here only to assist you with questions regarding your upcoming TalentSkout interview. Are you planning to appear for the interview?"
-    elif any(k in text_lower for k in ["yes", "i will appear", "i'll appear", "i will attend", "sure", "confirmed"]):
+    if any(k in transcript.lower() for k in ["yes", "i will appear", "i'll appear", "i will attend", "sure", "confirmed"]):
         tool_confirm_attendance(iid)
-        if itype == "ai_screener":
-            full_reply = f"That's wonderful, {name}! I have recorded your confirmation in the system. Please be sure to complete the assessment using the email link before it expires."
-        else:
-            full_reply = f"Wonderful, {name}! Your attendance has been confirmed in the system. Your panelist looks forward to speaking with you."
-    elif any(k in text_lower for k in ["who is the panelist", "interviewer", "who is taking", "panelist"]):
-        if itype == "ai_screener":
-            full_reply = "For this screening round, you will be interacting directly with the AI screener, so there is no human panelist."
-        else:
-            panelist = interview.get("panelist_name", "a Senior Engineering Lead")
-            full_reply = f"Your panel interview will be conducted by {panelist}."
-    elif any(k in text_lower for k in ["how much time", "when does it expire", "when is it", "timing"]):
-        if itype == "ai_screener":
-            full_reply = f"You have approximately {time_left} hours left before your 48-hour assessment link expires. Will you be appearing for it today?"
-        else:
-            full_reply = f"Your panel interview is scheduled to start in about {time_left} hours. Will you be appearing on time?"
-    else:
-        full_reply = f"Thanks for letting me know. Are you going to appear for your {role} interview today?"
 
-    words = full_reply.split(" ")
-    chunk = []
-    for word in words:
-        chunk.append(word)
-        if len(chunk) >= 4 or word.endswith((".", "!", "?")):
-            yield " ".join(chunk)
-            chunk = []
-            await asyncio.sleep(0.04)
-    if chunk:
-        yield " ".join(chunk)
+    sentence_buffer = ""
+    async for token in async_call_streaming_llm(messages, system_prompt, interview, transcript):
+        sentence_buffer += token
+        match = re.search(r"([.!?])\s+", sentence_buffer)
+        if match:
+            end_pos = match.end()
+            sentence = sentence_buffer[:end_pos].strip()
+            sentence_buffer = sentence_buffer[end_pos:]
+            sanitized = OutputGuardrail.sanitize(sentence)
+            if sanitized:
+                yield sanitized
+
+    if sentence_buffer.strip():
+        sanitized = OutputGuardrail.sanitize(sentence_buffer.strip())
+        if sanitized:
+            yield sanitized
 
 
 # ==============================================================================
