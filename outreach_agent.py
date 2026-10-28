@@ -41,7 +41,7 @@ if env_path.exists():
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
-MODEL = "claude-sonnet-5"
+MODEL = "claude-haiku-5-5"
 STT_LATENCY_RANGE_MS = (120, 200)
 TTS_FIRST_BYTE_RANGE_MS = (60, 100)
 ENDPOINT_THRESHOLD_MS = 400

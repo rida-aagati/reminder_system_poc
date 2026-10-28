@@ -1,0 +1,17 @@
+[
+ {
+  "t": 3.024,
+  "ev": "candidate_speech_start",
+  "label": "long"
+ },
+ {
+  "t": 3.587,
+  "ev": "agent_audio_start",
+  "bytes": 605248
+ },
+ {
+  "t": 7.469,
+  "ev": "candidate_speech_end",
+  "label": "long"
+ }
+]

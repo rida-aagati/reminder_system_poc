@@ -1,0 +1,44 @@
+[
+ {
+  "stage": "mic",
+  "name": "M1 agent does not interrupt itself via speaker echo",
+  "ok": true,
+  "detail": "0 self-barge-ins"
+ },
+ {
+  "stage": "mic",
+  "name": "M1 greeting played to completion",
+  "ok": false,
+  "detail": ""
+ },
+ {
+  "stage": "mic",
+  "name": "M2 mic captured candidate turn -> STT",
+  "ok": false,
+  "detail": "[]"
+ },
+ {
+  "stage": "mic",
+  "name": "M2 DB attendance confirmed",
+  "ok": false,
+  "detail": ""
+ },
+ {
+  "stage": "mic",
+  "name": "M3 barge-in fired during agent speech",
+  "ok": false,
+  "detail": ""
+ },
+ {
+  "stage": "mic",
+  "name": "M3 interrupting utterance transcribed (not lost)",
+  "ok": false,
+  "detail": "[]"
+ },
+ {
+  "stage": "mic",
+  "name": "M4 session completed w/out crash",
+  "ok": true,
+  "detail": ""
+ }
+]

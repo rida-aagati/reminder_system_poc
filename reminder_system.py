@@ -65,7 +65,7 @@ if env_path.exists():
                 k, v = line.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
-MODEL = "claude-sonnet-5"
+MODEL = "claude-haiku-5-5"
 DEEPGRAM_TTS_MODEL = "aura-asteria-en"  # Natural female voice
 DEEPGRAM_STT_MODEL = "nova-3"
 DEEPGRAM_STT_FALLBACK = "nova-2"

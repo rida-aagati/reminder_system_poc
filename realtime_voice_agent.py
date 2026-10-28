@@ -650,7 +650,7 @@ def resolve_llm_provider() -> Tuple[str, str, str, str]:
     # 3. Anthropic Claude
     anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
     if anthropic_key:
-        return ("anthropic", anthropic_key, "claude-3-5-sonnet-20241022", "https://api.anthropic.com/v1/messages")
+        return ("anthropic", anthropic_key, "claude-haiku-5-5", "https://api.anthropic.com/v1/messages")
 
     # 4. Google Gemini
     gemini_key = os.environ.get("GEMINI_API_KEY")
@@ -694,19 +694,31 @@ def sync_stream_openai_compatible(url: str, api_key: str, model: str, system: st
                     continue
 
 
+def merge_same_role(msgs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Anthropic/Gemini require strictly alternating roles; the pipeline stores one message per sentence."""
+    merged: List[Dict[str, Any]] = []
+    for m in msgs:
+        if merged and merged[-1]["role"] == m["role"]:
+            merged[-1]["content"] = (merged[-1]["content"] + " " + m["content"]).strip()
+        else:
+            merged.append({"role": m["role"], "content": m["content"]})
+    return merged
+
+
 def sync_stream_anthropic(api_key: str, model: str, system: str, messages: List[Dict[str, str]]):
     """Zero-dependency HTTP SSE streaming for Anthropic Claude Messages API."""
     claude_msgs = []
     for m in messages:
         role = "assistant" if m.get("role") in ("assistant", "agent") else "user"
         claude_msgs.append({"role": role, "content": m.get("content") or m.get("text", "")})
+    claude_msgs = merge_same_role(claude_msgs)
     payload = json.dumps({
         "model": model,
         "system": system,
+        "thinking": {"type": "disabled"},  # voice: hidden thinking eats max_tokens -> silent reply
         "messages": claude_msgs,
         "stream": True,
         "max_tokens": 120,
-        "temperature": 0.3,
     }).encode("utf-8")
     req = urllib.request.Request(
         "https://api.anthropic.com/v1/messages",

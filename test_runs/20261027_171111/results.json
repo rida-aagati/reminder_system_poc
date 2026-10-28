@@ -1,0 +1,98 @@
+[
+ {
+  "stage": "vad",
+  "name": "V1 turn captured @ speech rms 0.02",
+  "ok": false,
+  "detail": "turns=0 txt=''"
+ },
+ {
+  "stage": "vad",
+  "name": "V1 turn captured @ speech rms 0.04",
+  "ok": false,
+  "detail": "turns=0 txt=''"
+ },
+ {
+  "stage": "vad",
+  "name": "V1 turn captured @ speech rms 0.08",
+  "ok": false,
+  "detail": "turns=1 txt='For the interview.'"
+ },
+ {
+  "stage": "vad",
+  "name": "V1 turn captured @ speech rms 0.15",
+  "ok": false,
+  "detail": "turns=1 txt='I will prepare for the interview.'"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 barge-in fires @ speech rms 0.05",
+  "ok": false,
+  "detail": "never exceeded barge-in threshold"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 barge-in fires @ speech rms 0.1",
+  "ok": false,
+  "detail": "never exceeded barge-in threshold"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 barge-in fires @ speech rms 0.15",
+  "ok": false,
+  "detail": "never exceeded barge-in threshold"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 barge-in fires @ speech rms 0.25",
+  "ok": true,
+  "detail": "never exceeded barge-in threshold"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 latency<500ms @ 0.25",
+  "ok": false,
+  "detail": "2297ms"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 barge-in fires @ speech rms 0.4",
+  "ok": true,
+  "detail": "never exceeded barge-in threshold"
+ },
+ {
+  "stage": "vad",
+  "name": "V2 latency<500ms @ 0.4",
+  "ok": false,
+  "detail": "2095ms"
+ },
+ {
+  "stage": "vad",
+  "name": "V3 200ms loud click does not barge-in",
+  "ok": false,
+  "detail": ""
+ },
+ {
+  "stage": "vad",
+  "name": "V4 steady noise rms 0.10 does not barge-in",
+  "ok": true,
+  "detail": "false barge-in on background noise"
+ },
+ {
+  "stage": "vad",
+  "name": "V5 0.5s pause stays one turn",
+  "ok": true,
+  "detail": "1 turns (utterance split)"
+ },
+ {
+  "stage": "vad",
+  "name": "V5 0.9s pause stays one turn",
+  "ok": true,
+  "detail": "1 turns (utterance split)"
+ },
+ {
+  "stage": "vad",
+  "name": "V6 short 280ms 'Yes' still captured",
+  "ok": false,
+  "detail": "dropped by MIN_SPEECH_DURATION_MS"
+ }
+]

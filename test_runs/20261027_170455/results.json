@@ -1,0 +1,122 @@
+[
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: Yes, I will appear for the int",
+  "ok": true,
+  "detail": "WER 0.00 hyp='Yes. I will appear for the interview.'"
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: Yes, I will appear for th",
+  "ok": true,
+  "detail": "WER 0.00"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: Yes, I will appear for th",
+  "ok": true,
+  "detail": "WER 0.29"
+ },
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: Who is the panelist for my int",
+  "ok": true,
+  "detail": "WER 0.00 hyp='Who is the panelist for my interview?'"
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: Who is the panelist for m",
+  "ok": true,
+  "detail": "WER 0.00"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: Who is the panelist for m",
+  "ok": true,
+  "detail": "WER 0.14"
+ },
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: I have a few questions about t",
+  "ok": false,
+  "detail": "WER 0.22 hyp='I have a few questions about the NDA reformat.'"
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: I have a few questions ab",
+  "ok": true,
+  "detail": "WER 0.11"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: I have a few questions ab",
+  "ok": true,
+  "detail": "WER 0.22"
+ },
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: Can I reschedule to tomorrow a",
+  "ok": true,
+  "detail": "WER 0.14 hyp='I reschedule to tomorrow afternoon, please?'"
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: Can I reschedule to tomor",
+  "ok": true,
+  "detail": "WER 0.14"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: Can I reschedule to tomor",
+  "ok": true,
+  "detail": "WER 0.14"
+ },
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: How much time do I have before",
+  "ok": true,
+  "detail": "WER 0.00 hyp='How much time do I have before the link expires?'"
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: How much time do I have b",
+  "ok": true,
+  "detail": "WER 0.00"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: How much time do I have b",
+  "ok": true,
+  "detail": "WER 0.00"
+ },
+ {
+  "stage": "audio",
+  "name": "clean STT WER<=0.15: I am not sure I can make it.",
+  "ok": false,
+  "detail": "WER 0.25 hyp=\"I'm not sure I can make it.\""
+ },
+ {
+  "stage": "audio",
+  "name": "noise10dB WER<=0.35: I am not sure I can make ",
+  "ok": true,
+  "detail": "WER 0.25"
+ },
+ {
+  "stage": "audio",
+  "name": "noise0dB WER<=0.35: I am not sure I can make ",
+  "ok": true,
+  "detail": "WER 0.25"
+ },
+ {
+  "stage": "audio",
+  "name": "8 concurrent TTS all return audio",
+  "ok": true,
+  "detail": "[104812, 94222, 93666, 95338, 98682, 107040, 103140, 97566]"
+ },
+ {
+  "stage": "audio",
+  "name": "silence -> empty transcript (no hallucination)",
+  "ok": true,
+  "detail": "''"
+ }
+]

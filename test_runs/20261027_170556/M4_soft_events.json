@@ -1,0 +1,27 @@
+[
+ {
+  "t": 5.176,
+  "ev": "agent_audio_start",
+  "bytes": 605248
+ },
+ {
+  "t": 15.002,
+  "ev": "candidate_speech_start",
+  "label": "yes"
+ },
+ {
+  "t": 16.801,
+  "ev": "candidate_speech_end",
+  "label": "yes"
+ },
+ {
+  "t": 22.003,
+  "ev": "candidate_speech_start",
+  "label": "soft"
+ },
+ {
+  "t": 23.378,
+  "ev": "candidate_speech_end",
+  "label": "soft"
+ }
+]
